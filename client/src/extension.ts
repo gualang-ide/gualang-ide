@@ -24,6 +24,10 @@ function isStartedInDebugMode(): boolean {
     return process.env.VSCODE_DEBUG_MODE === "true";
 }
 
+function isWindows(): boolean {
+    return process.platform == 'win32';
+}
+
 function startLangServerTCP(addr: number): LanguageClient {
     const serverOptions: ServerOptions = () => {
         return new Promise((resolve, reject) => {
@@ -59,7 +63,11 @@ export function activate(context: ExtensionContext) {
     } else {
         // Production - Client is going to run the server (for use within `.vsix` package)
         const cwd = path.join(__dirname, "..", "..");
-        client = startLangServer("server/gualang.ide.mac", [], cwd);
+        if (isWindows()) {
+            client = startLangServer("server/gualang.ide.win.exe", [], cwd);
+        } else {
+            client = startLangServer("server/gualang.ide.mac", [], cwd);
+        }
     }
 
     context.subscriptions.push(client.start());
