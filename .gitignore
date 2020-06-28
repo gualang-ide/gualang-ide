@@ -1,0 +1,14 @@
+out
+node_modules
+client/node_modules
+client/server
+.vscode-test
+*.so
+*.py
+*.c
+*.spec
+*.vsix
+.python-version
+__pycache__
+build
+dist
