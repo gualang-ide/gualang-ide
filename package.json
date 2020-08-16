@@ -1,0 +1,37 @@
+{
+	"name": "Gualang-IDE",
+	"description": "Gualang IDE",
+	"author": "gualang-ide",
+	"license": "MIT",
+	"version": "2.0.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gualang-ide/gualang-ide"
+	},
+	"publisher": "gualang-ide",
+	"categories": [],
+	"keywords": [
+		"gualang"
+	],
+	"engines": {
+		"vscode": "^1.42.0"
+	},
+	"activationEvents": [
+		"onLanguage:gualang"
+	],
+	"main": "./client/out/extension",
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -b",
+		"watch": "tsc -b -w",
+		"postinstall": "cd client && npm install && cd .."
+	},
+	"devDependencies": {
+		"@types/mocha": "^5.2.7",
+		"mocha": "^6.2.2",
+		"@types/node": "^12.12.0",
+		"eslint": "^6.4.0",
+		"@typescript-eslint/parser": "^2.3.0",
+		"typescript": "^3.8.3"
+	}
+}
