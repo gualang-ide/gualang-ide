@@ -28,6 +28,10 @@ function isWindows(): boolean {
     return process.platform == 'win32';
 }
 
+function isLinux(): boolean {
+    return process.platform == 'linux';
+}
+
 function startLangServerTCP(addr: number): LanguageClient {
     const serverOptions: ServerOptions = () => {
         return new Promise((resolve, reject) => {
@@ -65,6 +69,8 @@ export function activate(context: ExtensionContext) {
         const cwd = path.join(__dirname, "..", "..");
         if (isWindows()) {
             client = startLangServer("server/gualang.ide.win.exe", [], cwd);
+        } else if (isLinux()) {
+            client = startLangServer("server/gualang.ide.linux", [], cwd);
         } else {
             client = startLangServer("server/gualang.ide.mac", [], cwd);
         }
