@@ -51,10 +51,11 @@ function startLangServerTCP(addr: number): LanguageClient {
 function startLangServer(
     command: string, args: string[], cwd: string,
 ): LanguageClient {
+    command = path.join(cwd, command)
     const serverOptions: ServerOptions = {
         command,
         args,
-        options: { cwd },
+        // options: { cwd },
     };
 
     return new LanguageClient(command, serverOptions, getClientOptions());
