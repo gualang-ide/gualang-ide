@@ -3,7 +3,7 @@
 	"description": "Gualang IDE",
 	"author": "gualang-ide",
 	"license": "MIT",
-	"version": "2.2.2",
+	"version": "2.2.3",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/gualang-ide/gualang-ide"
